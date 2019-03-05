@@ -17,7 +17,6 @@ PRs are welcome (if anyone even discovers this)!
 - [ ] Allow users with registered accounts to update their email
 - [ ] Allow users with registered accounts to change their password
 - [ ] Allow users with registered accounts to change their password if forgotten
-- [ ] 
 
 
 ### Release 2.0.0 - The Config Release 🔧
@@ -26,7 +25,6 @@ PRs are welcome (if anyone even discovers this)!
 - [ ] Add per user config to set greetings for those time of day ranges
 - [ ] Add per user config to set background images for those time of day ranges
 - [ ] Allow users with registered accounts to add/update their profile picture
-- [ ] 
 
 
 ### Release 3.0.0 - The Monitization Release 💲
@@ -36,6 +34,5 @@ PRs are welcome (if anyone even discovers this)!
 - [ ] Should be cheap too...right?
 - [ ] I might be getting way ahead of myslef, been on cold medication soooo...
 - [ ] Ouu..daily todo list is remebered for paying users, non paying just gets a single goal for the day
-- [ ]
 
 > ##### Made using this [boilerplate](https://github.com/bradtraversy/node_passport_login) provided by [Brad Traversy](https://github.com/bradtraversy).
