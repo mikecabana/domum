@@ -8,8 +8,13 @@
     "dev": "nodemon app.js"
   },
   "keywords": [
-    "home",
-    "page"
+    "domum",
+    "homepage",
+    "accounts",
+    "express",
+    "ejs",
+    "cookie",
+    "passport"
   ],
   "author": "Michael Cabana <mikeycabana@gmail.com> (https://mikecabana.com/)",
   "license": "MIT",
