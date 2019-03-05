@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
+const path = require('path');
 
 const app = express();
 
@@ -19,6 +20,9 @@ mongoose.connect(process.env.CONNECTION_STRING,{ useNewUrlParser: true })
 // EJS
 app.use(expressLayouts);
 app.set('view engine', 'ejs');
+
+// Express serve static files
+app.use('/', express.static(path.join(__dirname, './views/public')))
 
 // Express body parser
 app.use(express.urlencoded({ extended: true }));
