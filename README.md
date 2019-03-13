@@ -12,7 +12,7 @@ PRs are welcome (if anyone even discovers this)!
 - [x] Add time to dashboard
 - [x] Add greetings based on time of day
 - [ ] Change background based on time of day (maybe with unsplash image api for random images)
-- [ ] Add remeber me functionality on login
+- [x] Add remeber me functionality on login
 - [ ] Allow users with registered accounts to update their name
 - [ ] Allow users with registered accounts to update their email
 - [ ] Allow users with registered accounts to change their password
