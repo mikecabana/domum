@@ -1,4 +1,22 @@
+.domum-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -5;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transform: translateX(-15px);
+}
+
+.logo {
+    color: white;
+    mix-blend-mode: difference;
+}
+
 .time {
+    color: white;
+    mix-blend-mode: difference;
     font-size: 6rem;
     margin-top: 100px;
     margin-top: 100px;
@@ -7,8 +25,28 @@
 .fa-user-circle {
     font-size: 2rem;
     margin-right: 15px;
+    color: white;
+    mix-blend-mode: difference;
 }
 
 .welcome-message h2 {
     font-weight: 300;
+    color: white !important;
+    mix-blend-mode: difference !important;
+}
+
+.logout-btn {
+    background-color: transparent !important;
+    border-width: 1px !important;    
+    border-color: transparent !important;
+    border-radius: 30px !important;
+    line-height: 1rem !important;
+    color: white !important;
+    mix-blend-mode: difference !important;
+}
+.logout-btn:hover {
+    background-color: transparent !important;
+    border-width: 1px !important;
+    border-color: white !important;
+    border-radius: 30px !important;
 }

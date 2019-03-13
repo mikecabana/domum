@@ -43,7 +43,7 @@ router.get('/dashboard', ensureAuthenticated, async (req, res) => {
 
     const { greeting, range } = greetings.filter(g => g.inTimeRange)[0];
 
-    const query = greeting;
+    const query = String(greeting, greeting.split(' ')[1], 'outdoors');
 
     if (!photo && hourRange.length <= 0 && isCurrentHourInRange(range)) {
 

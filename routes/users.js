@@ -15,10 +15,10 @@ router.get('/register', (req, res) => res.render('register'));
 
 // Register
 router.post('/register', (req, res) => {
-    const { name, email, password, password2 } = req.body;
+    const { name, shortName, email, password, password2 } = req.body;
     let errors = [];
 
-    if (!name || !email || !password || !password2) {
+    if (!name || !shortName || !email || !password || !password2) {
         errors.push({ msg: 'Please enter all fields' });
     }
 
@@ -34,6 +34,7 @@ router.post('/register', (req, res) => {
         res.render('register', {
             errors,
             name,
+            shortName,
             email,
             password,
             password2
@@ -52,6 +53,7 @@ router.post('/register', (req, res) => {
             } else {
                 const newUser = new User({
                     name,
+                    shortName,
                     email,
                     password
                 });
@@ -79,15 +81,9 @@ router.post('/register', (req, res) => {
 
 // Login
 router.post('/login', passport.authenticate('local', {
-    // successRedirect: '/dashboard',
     failureRedirect: '/users/login',
     failureFlash: true
 }), (req, res, next) => {
-    // passport.authenticate('local', {
-    //     successRedirect: '/dashboard',
-    //     failureRedirect: '/users/login',
-    //     failureFlash: true
-    // })(req, res, next);
 
     if (!req.body.remember_me) {
         return next();
