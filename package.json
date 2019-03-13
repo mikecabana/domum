@@ -4,6 +4,7 @@
   "description": "a minimalist homepage that remebers you",
   "main": "app.js",
   "scripts": {
+    "eslint": "eslint",
     "start": "node app.js",
     "dev": "nodemon app.js"
   },
@@ -23,12 +24,16 @@
     "connect-flash": "^0.1.1",
     "dotenv": "^6.2.0",
     "ejs": "^2.6.1",
+    "eslint": "^5.15.1",
     "express": "^4.16.4",
     "express-ejs-layouts": "^2.5.0",
     "express-session": "^1.15.6",
+    "isomorphic-fetch": "^2.2.1",
     "mongoose": "^5.4.17",
     "passport": "^0.4.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "unsplash-js": "^5.0.0",
+    "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.10"
