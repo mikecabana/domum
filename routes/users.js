@@ -2,8 +2,10 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
+const jwt = require('jsonwebtoken');
 // Load User model
 const User = require('../models/User');
+const Token = require('../models/Token');
 
 // Login Page
 router.get('/login', (req, res) => res.render('login'));
@@ -76,16 +78,46 @@ router.post('/register', (req, res) => {
 });
 
 // Login
-router.post('/login', (req, res, next) => {
-    passport.authenticate('local', {
-        successRedirect: '/dashboard',
-        failureRedirect: '/users/login',
-        failureFlash: true
-    })(req, res, next);
+router.post('/login', passport.authenticate('local', {
+    // successRedirect: '/dashboard',
+    failureRedirect: '/users/login',
+    failureFlash: true
+}), (req, res, next) => {
+    // passport.authenticate('local', {
+    //     successRedirect: '/dashboard',
+    //     failureRedirect: '/users/login',
+    //     failureFlash: true
+    // })(req, res, next);
+
+    if (!req.body.remember_me) {
+        return next();
+    }
+
+    const token = jwt.sign({ userId: req.user._id }, 'secret');
+
+    const tokenForDb = new Token({
+        token,
+        userId: req.user._id
+    });
+
+    tokenForDb.save()
+        .then(() => {
+            // 1 min = 60000
+            // 1 day = 86400000
+            res.cookie('remember_me', token, { path: '/', httpOnly: true, maxAge: process.env.REMEMBER_ME_COOKIE_MAX_AGE });
+
+            return next();
+        })
+        .catch(err => {
+            return next(err);
+        });
+}, (req, res) => {
+    res.redirect('/dashboard');
 });
 
 // Logout
 router.get('/logout', (req, res) => {
+    res.clearCookie('remember_me');
     req.logout();
     req.flash('success_msg', 'You are logged out');
     res.redirect('/users/login');

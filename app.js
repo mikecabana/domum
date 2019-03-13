@@ -6,6 +6,7 @@ const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
 const path = require('path');
+const cookieParser = require('cookie-parser');
 require('isomorphic-fetch');
 
 const app = express();
@@ -23,7 +24,9 @@ app.use(expressLayouts);
 app.set('view engine', 'ejs');
 
 // Express serve static files
-app.use('/', express.static(path.join(__dirname, './views/public')))
+app.use('/', express.static(path.join(__dirname, './views/public')));
+
+app.use(cookieParser());
 
 // Express body parser
 app.use(express.urlencoded({ extended: true }));
@@ -40,6 +43,7 @@ app.use(
 // Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(passport.authenticate('remember-me'));
 
 // Connect flash
 app.use(flash());
