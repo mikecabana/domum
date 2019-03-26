@@ -35,6 +35,7 @@ module.exports = function (passport) {
     );
 
     passport.use(new RememberMeStrategy(
+        // configuration
         {
             key: 'remember_me',
             cookie: {
@@ -43,7 +44,7 @@ module.exports = function (passport) {
                 maxAge: process.env.REMEMBER_ME_COOKIE_MAX_AGE
             }
         },
-        // consume token
+        // verify callback, consumes the token
         async (token, done) => {
             try {
                 const tokenFromDb = await Token.findOne({ token }).exec();
@@ -69,7 +70,7 @@ module.exports = function (passport) {
                 return done(err);
             }
         },
-        // issue token
+        // issue callback, issues a token
         (user, done) => {
             const token = jwt.sign({ userId: user._id }, 'secret');
 

@@ -85,6 +85,7 @@ router.post('/login', passport.authenticate('local', {
     failureFlash: true
 }), (req, res, next) => {
 
+    // issue a remember me cookie if the option was checked
     if (!req.body.remember_me) {
         return next();
     }
